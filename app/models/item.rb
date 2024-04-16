@@ -1,5 +1,7 @@
 class Item < ApplicationRecord
- # belongs_to genre
+  belongs_to :genre
+  has_many :cart_items, dependent: :destroy
+
   with_options presence: true do
     validates :name
     validates :introduction
@@ -7,5 +9,5 @@ class Item < ApplicationRecord
     validates :item_image
   end
   validates :is_active, inclusion:{in: [true, false]}
-  has_one_attached :item_imege
+  has_one_attached :item_image
 end
