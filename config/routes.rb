@@ -27,8 +27,11 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :show, :edit, :create, :update, :destroy]
   end
 
-  namespace :admin do
+  scope module: :admin do
     get "/admin" => "homes#top"
+  end
+
+  namespace :admin do
     resources :items, only: [:new, :index, :show, :edit, :create, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :customers, only: [:index, :edit, :show, :update]
