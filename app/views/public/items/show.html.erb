@@ -1,0 +1,15 @@
+<!--商品詳細-->
+
+
+
+
+
+
+
+
+
+<!--ここからカートに商品を追加するための画面-->
+<%= form_with :@item.new do |f| %>
+  <%= f.hidden_field :item_id, value:@item.id %>
+  <%= f.select :amount, *[1..10] %>
+<% end %>

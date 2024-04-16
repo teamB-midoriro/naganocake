@@ -1,5 +1,7 @@
 class Item < ApplicationRecord
- # belongs_to genre
+ belongs_to :genre
+ has_many :cart_items
+
   with_options presence: true do
     validates :name
     validates :introduction
