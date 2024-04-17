@@ -1,1 +1,49 @@
-<h1>My Page!</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-3 mt-3">
+      <h5>マイページ</h5>
+
+      <div class="d-flex my-3">
+        <strong>登録情報</strong>
+        <%= link_to "編集する", edit_customer_registration_path, class: 'btn py-2 px-4 btn-success' %>
+      </div>
+
+      <table class="table mb-3">
+        <tr>
+          <th>氏名</th>
+          <th><!--<-%= customer.last_name + customer.first_name %>--></th>
+        </tr>
+        <tr>
+          <th>カナ</th>
+          <th><!--<-%= customer.last_name_kana + customer.first_name_kana %>--></th>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <th><!--%= customer.postal_code %>--></th>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <th><!--%= customer.address %>--></th>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <th><!--%= customer.telephone_number %>--></th>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <th><!--%= customer.email %>--></th>
+        </tr>
+      </table>
+
+      <div class="d-flex my-2 mx-auto">
+        <strong>配送先</strong>
+        <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %>
+      </div>
+      <div class="d-flex my-2 mx-auto">
+        <strong>注文履歴</strong>
+        <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
+      </div>
+
+    </div>
+  </div>
+</div>
