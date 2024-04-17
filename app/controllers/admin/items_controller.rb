@@ -2,7 +2,7 @@ class Admin::ItemsController < ApplicationController
   # before_action :authenticate_admin!
 
   def index
-    @items = Item.pega(params[:id])
+    @items = Item.page(params[:id])
   end
 
   def new
