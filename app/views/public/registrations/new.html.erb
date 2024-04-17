@@ -12,13 +12,13 @@
           <label>名前</label>
         </div>
         <div>
-          (姓)
+          <%= f.label :last_name, "(姓)" %>
         </div>
         <div>
           <%= f.text_field :last_name, autofocus: true, autocomplete: "family-name", class: "form-control", placeholder: "令和" %>
         </div>
         <div>
-          <label>(名)</label>
+          <%= f.label :first_name, "(名)" %>
         </div>
         <div>
           <%= f.text_field :first_name, autocomplete: "given-name", class: "form-control", placeholder: "道子" %>
@@ -30,13 +30,13 @@
           <label>フリガナ</label>
         </div>
         <div>
-          <label>(セイ)</label>
+          <%= f.label :last_name_kana, "(セイ)" %>
         </div>
         <div>
           <%= f.text_field :last_name_kana, autocomplete: "name", class: "form-control", placeholder: "レイワ" %>
         </div>
         <div>
-          <label>(メイ)</label>
+          <%= f.label :last_name_kana, "(メイ)" %>
         </div>
         <div>
           <%= f.text_field :first_name_kana, autocomplete: "name", class: "form-control", placeholder: "ミチコ" %>
@@ -45,7 +45,7 @@
 
       <div class="form-group d-flex my-3">
         <div class="my-2 mx-3">
-          <label>メールアドレス</label>
+          <%= f.label :email, "メールアドレス" %>
         </div>
         <div>
           <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "sample@example.com" %>
@@ -54,7 +54,7 @@
 
       <div class="form-group d-flex my-3">
         <div class="my-2 mx-3">
-          <label>郵便番号(ハイフンなし)</label>
+          <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
         </div>
         <div>
           <%= f.text_field :postal_code, autocomplete: "postal-code", class: "form-control", placeholder: "0000000" %>
@@ -63,7 +63,7 @@
 
       <div class="form-group d-flex my-3">
         <div class="my-2 mx-3">
-          <label>住所</label>
+          <%= f.label :address, "住所" %>
         </div>
         <div>
           <%= f.text_field :address, autocomplete: "shipping", class: "form-control", placeholder: "東京都渋谷区代々木神園町0-0" %>
@@ -72,7 +72,7 @@
 
       <div class="form-group d-flex my-3">
         <div class="my-2 mx-3">
-          <label>電話番号(ハイフンなし)</label>
+          <%= f.label :telephone_number, "電話番号(ハイフンなし)" %>
         </div>
         <div>
           <%= f.text_field :telephone_number, autocomplete: "tel-national", class: "form-control", placeholder: "0000000000" %>
@@ -81,7 +81,7 @@
 
       <div class="form-group d-flex my-3">
         <div class="my-2 mx-3">
-          <label>パスワード(6文字以上)</label>
+          <%= f.label :password, "パスワード(6文字以上)" %>
         </div>
         <div>
           <% if @minimum_password_length %>
@@ -93,7 +93,7 @@
 
       <div class="form-group d-flex my-3">
         <div class="my-2 mx-3">
-          <label>パスワード(確認用)</label>
+          <%= f.label :password, "パスワード(確認用)" %>
         </div>
         <div>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>

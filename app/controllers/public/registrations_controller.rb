@@ -5,7 +5,11 @@ class Public::RegistrationsController < ApplicationController
   end
 
   def create
-    redirect_to customers_my_page_path
+    @customer_sign_up = Customer.new
+    if @customer_sign_up.save
+      flash[:notice] = "Welcome! You have signed up successfully."
+      # redirect_to customers_my_page_path
+    end
   end
 
 

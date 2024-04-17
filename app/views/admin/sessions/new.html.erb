@@ -9,7 +9,7 @@
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group d-flex my-3">
           <div class="my-2 mx-3">
-            <label>メールアドレス</label>
+            <%= f.label :email, "メールアドレス" %>
           </div>
           <div class="col-8">
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "sample@example.com" %>
@@ -18,7 +18,7 @@
 
         <div class="form-group d-flex my-3">
           <div class="my-2 ml-3 mr-4">
-            <label>パスワード</label>
+            <%= f.label :password, "パスワード" %>
           </div>
           <div class="col-8 ml-4">
             <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
