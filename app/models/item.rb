@@ -10,4 +10,8 @@ class Item < ApplicationRecord
   end
   validates :is_active, inclusion:{in: [true, false]}
   has_one_attached :item_image
+
+  def add_tax_price
+    (self.price * 1.08).round
+  end
 end

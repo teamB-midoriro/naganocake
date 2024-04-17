@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row justify-content-around my-5">
-  <h3 class="">商品一覧</h3>
-  <div class="">
-    <%= link_to '+', new_admin_item_path, class: "btn btn-sm btn-success" %>
-  </div>
+    <h3 class="">商品一覧</h3>
+    <div class="">
+      <%= link_to '+', new_admin_item_path, class: "btn btn-success rounded-circle" %>
+    </div>
   </div>
   <table class="table">
     <thead>
@@ -19,14 +19,21 @@
       <% @items.each do |item| %>
       <tr>
         <td><%= item.id %></td>
-        <td><%= link_to item.name, item_path(item) %></td>
-        <td><%= item.price %></td>
+        <td><%= link_to item.name, admin_item_path(item) %></td>
+        <td><%= item.price.to_s(:delimited) %></td>
         <td><%= item.genre.name %></td>
-        <td><%= item.is_active %></td>
+        <td>
+          <% if item.is_active %>
+            <p class="text-success"><strong>販売中</strong></p>
+          <% else %>
+            <p class="text-muted"><strong>販売停止</strong></p>
+          <% end %>
+        </td>
       </tr>
       <% end %>
-      <%= paginate @items %>
     </tbody>
   </table>
-
+  <div class="d-flex justify-content-center">
+    <%= paginate @items %>
+  </div>
 </div>
