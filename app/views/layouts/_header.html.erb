@@ -1,0 +1,60 @@
+<header>
+  <nav class="navber">
+      <div class="row d-flex justify-content-around">
+        <div>
+          <%= link_to root_path  do %>
+            <%= image_tag 'cake_icon.png', alt: "ロゴ" %>
+          <% end %>
+        </div>
+        <div class="d-flex justify-content-end">
+          <% if customer_signed_in? %>
+            <div>
+              ようこそ、<%= current_customer.last_name %>さん!
+            </div>
+            <div>
+              <%= link_to "マイページ", customers_my_page_path(current_user) %>
+            </div>
+            <div>
+              <%= link_to "商品一覧", items_path %>
+            </div>
+            <div>
+              <%= link_to "カート", cart_items_path %>
+            </div>
+            <div>
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+            </div>
+          <% elsif admin_signed_in? %>
+            <div>
+              <%= link_to "商品一覧", admin_items_path %>
+            </div>
+            <div>
+              <%= link_to "会員一覧", admin_customers_path %>
+            </div>
+            <div>
+              <%= link_to "注文履歴一覧", admin_path %>
+            </div>
+            <div>
+              <%= link_to "ジャンル一覧", admin_genres_path %>
+            </div>
+            <div>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+            </div>
+          <% else %>
+            <div>
+              <%= link_to "About", about_path %>
+            </div>
+            <div>
+              <%= link_to "商品一覧", items_path %>
+            </div>
+            <div>
+              <%= link_to "新規登録", new_customer_registration_path %>
+            </div>
+            <div>
+              <%= link_to "ログイン", new_customer_session_path %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
