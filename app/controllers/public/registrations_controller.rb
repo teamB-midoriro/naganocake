@@ -1,10 +1,11 @@
 class Public::RegistrationsController < ApplicationController
-  before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, if: :devise_controller?
 
   def new
   end
 
   def create
+    redirect_to customers_my_page_path
   end
 
 
