@@ -1,0 +1,8 @@
+<h1>ジャンル編集</h1>
+<div>
+  <%= form_with model: @genre, url: admin_genre_path, method: :patch do |f| %>
+    <%= f.label :name, "ジャンル名" %>
+    <%= f.text_field :name, placeholder: "ジャンル名", class: "form-control" %>
+    <%= f.submit "更新", class: "btn btn-success" %>
+  <% end %>
+</div>
