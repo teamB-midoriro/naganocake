@@ -10,8 +10,9 @@ class Item < ApplicationRecord
   end
   validates :is_active, inclusion:{in: [true, false]}
   has_one_attached :item_image
-
+  
+  #消費税を求めるメソッド
   def add_tax_price
-    (self.price * 1.08).round
+    (self.price * 1.1).round
   end
 end

@@ -13,20 +13,21 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="mt-5">
     <h2>新着商品</h2>
-<%#    <div class="d-flex flex-wrap">
+    <div class="row mt-4">
       <% @items.each do |item| %>
-<%#        <%= link_to item_path(item.id) do %>
-<%#          <div class="card">
-            <%= image_tag item. %>
-<%#            <div class="card-body text-body">
-              <h5 class="card-title text-primary"><%= item.name %></h5>
-<%#              <p class="card-text text-primary">¥<%= item.price %></p>
-<%#            </div>
+        <div>
+          <div>
+            <%= link_to item_path(item) do %>
+              <%= image_tag item.item_image, size: "100x100" %>
+            <% end %>
           </div>
-        <% end %>
-<%#      <% end %>
+          <div><%= item.name %></div>
+          <div>¥<%= item.add_tax_price.to_s(:delimited) %></div>
+        </div>
+      <% end %>
+      <div class="text-center mt-5"><%= link_to "すべての商品を見る", items_path %></div>
     </div>
   </div>
 </div>
