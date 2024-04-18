@@ -41,4 +41,7 @@ class Public::CartItemsController < ApplicationController
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :amount)
   end
+=======
+  before_action :authenticate_customer!
+>>>>>>> develop
 end

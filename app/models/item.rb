@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  has_many :genres
+  belongs_to :genre
   has_many :cart_items, dependent: :destroy
 
   with_options presence: true do
@@ -11,11 +11,12 @@ class Item < ApplicationRecord
   validates :is_active, inclusion:{in: [true, false]}
   has_one_attached :item_image
   
-  def with_tax_price
-    (price * 1.1).floor
+  #消費税を求めるメソッド
+  def add_tax_price
+    (self.price * 1.1).round
   end
-  
+  # 小計を求めるメソッド
   def subtotal
-    item.with_tax_price * amount
+    item.add_tax_price * amount
   end
 end

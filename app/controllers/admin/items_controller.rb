@@ -2,7 +2,8 @@ class Admin::ItemsController < ApplicationController
   # before_action :authenticate_admin!
 
   def index
-    @items = Item.all
+    @items = Item.page(params[:page]).per(10).order(created_at: :ASC)
+
   end
 
   def new
@@ -19,11 +20,12 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
-
+   @item = Item.find(params[:id])
   end
 
   def edit
-
+   @item = Item.find(params[:id])
+   @genres = Genre.all
   end
 
   def update
