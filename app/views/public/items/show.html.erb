@@ -1,23 +1,26 @@
 <!--商品詳細-->
-<div class="container col-md-10 bg-light ">
+<div class="container d-flex justify-content-center col-md-10 mt-5 ">
+  <p><%= render 'layouts/errors', obj: @cart_item %></p>
   <div class="row">
-  
-
-
-
-
-
-
-
-  </div>
+    <div class="col-md-5">
+      <%= image_tag @item.item_image, size: "200x200" %>
+    </div>
+    <div class="col-md-7">
+      <h2><%= @item.name %></h2>
+      <h5 class="mb-5"><%= @item.introduction %></h5>
+      <h3 class="mt-5">¥<%= @item.add_tax_price.to_s(:delimited) %><span>(税込み)</span></h3>
+    </div>
 <!--ここからカートに商品を追加するための画面-->
-  <div class="d-flex justify-content-end">
+    <div class="col d-flex justify-content-end">
       <%= form_with model: @cart_item do |f| %>
         <%= f.hidden_field :item_id, value: @item.id %>
-        <span class="mr-3">
-          <%= f.select :amount, options_for_select([["個数選択", ""], *(1..50)]) %>
+        <span class="mr-5">
+          <%#= f.select :amount, options_for_select([["個数選択", ""], *(1..50)]) %>
+          <%#= f.select :amount, *(1..50), placeholder: "個数選択", %>
+          <%= f.select :amount, (1..50).to_a, prompt: "個数選択" %>
         </span>
         <%= f.submit "カートに入れる", class: "btn btn-success" %>
       <% end %>
+    </div>
   </div>
 </div>
