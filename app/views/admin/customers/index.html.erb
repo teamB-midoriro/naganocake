@@ -3,7 +3,7 @@
     <div class="col">
     <h5 class="text-left">会員一覧</h5>
 
-    <table class="table my-3 table-borderd mx-auto">
+    <table class="table my-3 table-borderd col-md-8">
       <thead>
         <tr>
           <th>会員ID</th>
@@ -18,7 +18,13 @@
           <td><%= customer.id %></td>
           <td><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer) %></td>
           <td><%= customer.email %></td>
-          <td><%= customer.customer_status %></td>
+          <td>
+            <% if customer.is_active %>
+              <p class="text-success"><strong>有効</strong></p>
+            <% else %>
+              <p class="text-muted"><strong>退会</strong></p>
+            <% end %>
+          </td>
         </tr>
         <% end %>
       </tbody>
