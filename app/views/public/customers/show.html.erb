@@ -4,44 +4,44 @@
       <h5>マイページ</h5>
 
       <div class="d-flex my-3">
-        <strong>登録情報</strong>
-        <%= link_to "編集する", edit_customer_registration_path, class: 'btn py-2 px-4 btn-success' %>
+        <strong class="my-2">登録情報</strong>
+        <%= link_to "編集する", customers_information_edit_path, class: 'btn py-2 px-4 btn-success mx-3' %>
       </div>
 
-      <table class="table mb-3">
+      <table class="table mb-3 table-bordered">
         <tr>
-          <th>氏名</th>
-          <th><!--<-%= customer.last_name + customer.first_name %>--></th>
+          <td class="bg-light">氏名</td>
+          <td><%= @customer.last_name + "  " + @customer.first_name %></td>
         </tr>
         <tr>
-          <th>カナ</th>
-          <th><!--<-%= customer.last_name_kana + customer.first_name_kana %>--></th>
+          <td class="bg-light">カナ</td>
+          <td><%= @customer.last_name_kana + "  " + @customer.first_name_kana %></td>
         </tr>
         <tr>
-          <th>郵便番号</th>
-          <th><!--%= customer.postal_code %>--></th>
+          <td class="bg-light">郵便番号</td>
+          <td><%= @customer.postal_code %></td>
         </tr>
         <tr>
-          <th>住所</th>
-          <th><!--%= customer.address %>--></th>
+          <td class="bg-light">住所</td>
+          <td><%= @customer.address %></td>
         </tr>
         <tr>
-          <th>電話番号</th>
-          <th><!--%= customer.telephone_number %>--></th>
+          <td class="bg-light">電話番号</td>
+          <td><%= @customer.telephone_number %></td>
         </tr>
         <tr>
-          <th>メールアドレス</th>
-          <th><!--%= customer.email %>--></th>
+          <td class="bg-light">メールアドレス</td>
+          <td><%= @customer.email %></td>
         </tr>
       </table>
 
-      <div class="d-flex my-2 mx-auto">
-        <strong>配送先</strong>
-        <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %>
+      <div class="d-flex my-3 mx-auto">
+        <strong class="my-2">配送先</strong>
+        <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary mx-3" %>
       </div>
-      <div class="d-flex my-2 mx-auto">
-        <strong>注文履歴</strong>
-        <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
+      <div class="d-flex my-3 mx-auto">
+        <strong class="my-2">注文履歴</strong>
+        <%= link_to "一覧を見る", orders_path, class: "btn btn-primary mx-3" %>
       </div>
 
     </div>
