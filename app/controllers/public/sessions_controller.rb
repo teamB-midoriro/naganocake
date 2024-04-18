@@ -42,7 +42,7 @@ class Public::SessionsController < Devise::SessionsController
         flash[:notice] = "退会済みです。再度ご登録をしてご利用ください"
         redirect_to new_customer_registration_path
       else
-        flash[:notice] = "項目を入力してください"
+        flash[:notice] = "入力内容をご確認ください"
       end
     else
       flash[:notice] = "該当ユーザーが見つかりません"
