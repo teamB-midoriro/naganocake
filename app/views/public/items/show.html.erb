@@ -14,12 +14,8 @@
     <div class="col d-flex justify-content-end">
       <%= form_with model: @cart_item do |f| %>
         <%= f.hidden_field :item_id, value: @item.id %>
-        <span class="mr-5">
-          <%#= f.select :amount, options_for_select([["個数選択", ""], *(1..50)]) %>
-          <%#= f.select :amount, *(1..50), placeholder: "個数選択", %>
-          <%= f.select :amount, (1..50).to_a, prompt: "個数選択" %>
-        </span>
-        <%= f.submit "カートに入れる", class: "btn btn-success" %>
+        <span class="mr-5"><%= f.select :amount, *[1..50] %></span>
+        <span><%= f.submit "カートに入れる", class: "btn btn-success" %></span>
       <% end %>
     </div>
   </div>
