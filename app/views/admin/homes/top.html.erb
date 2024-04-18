@@ -1,3 +1,23 @@
-<h1>welcome!</h1>
-
-<%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+<div class="container">
+  <h3 class="my-5">注文履歴一覧</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <td>購入日時</td>
+        <td>購入者</td>
+        <td>注文個数</td>
+        <td>注文ステータス</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.created_at %></td>
+        <td><%= order.name %></td>
+        <td><%= order.order_detail.amount %></td>
+        <td></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
