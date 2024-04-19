@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-  # befor_action :athenticate_customer!
+  before_action :authenticate_customer!
   
   def index
     @orders = current_customer.orders

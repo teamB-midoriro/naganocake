@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :admins, controllers: {
+  devise_for :admins, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
-  devise_for :customers, controllers: {
+  devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
@@ -27,13 +27,16 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :show, :edit, :create, :update, :destroy]
   end
 
-  namespace :admin do
+  scope module: :admin do
     get "/admin" => "homes#top"
+  end
+
+  namespace :admin do
     resources :items, only: [:new, :index, :show, :edit, :create, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :customers, only: [:index, :edit, :show, :update]
     resources :orders, only: [:show, :update]
-    resources :order_detalis, only: [:update]
+    resources :order_details, only: [:update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
