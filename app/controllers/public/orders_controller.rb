@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-  before_action :authenticate_customer!, only: [:new, :confirm, :create, :index,:show, :complete]
+  before_action :authenticate_customer!, only: [:new, :confirm, :create, :index, :show, :thanks]
 
   def new
     @order = Order.new
@@ -25,24 +25,57 @@ class Public::OrdersController < ApplicationController
 
     # 商品合計額の計算
     ary = []
-    @cart_items.each.do |cart_item|
-      ary << cart_item.item.price * cart_item.amount
-
+    @cart_items.each do |cart_item|
+      ary << cart_item.item.add_tax_price * cart_item.amount
+    end
     @cart_items_price = ary.sum
-    shipping_fee = 800
-    @total_price = shipping_fee + @cart_items_price
+    @shipping_cost = 800
+    @total_payment = @shipping_cost + @cart_items_price
+    # hidden_field
+    @order_new = Order.new
+  end
+
+  def create
+    order = Order.new(order_params)
+    order.save
+    @cart_items = current_customer.cart_items.all
+
+    @cart_items.each do |cart_item|
+      @order_details = OrderDetail.new
+      @order_details.order_id = order.id
+      @order_details.item_id = cart_item.item.id
+      @order_details.price = cart_item.item.add_tax_price
+      @order_details.amount = cart_item.amount
+      @order_details.making_status = 0
+      @order_details.save!
+    end
+
+    if CartItem.destroy_all
+      redirect_to orders_thanks_path
+    else
+      render 'new'
+    end
   end
 
   def thanks
   end
 
-  def create
+  def show
+    render 'thanks'
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_payment, :customer_id, :status)
+  end
+
+  def cartitem_nill
+     cart_items = current_customer.cart_items
+     if cart_items.blank?
+
+      redirect_to cart_items_path
+     end
   end
 
 end
