@@ -47,12 +47,12 @@
         <th>個数</th>
         <th>単価(税込)</th>
         <th>小計</th>
-      </tr>
         <%= @order_details.each do |order_detail| %>
           <td><%= order_detail.name %></td>
           <td><%= order_detail.amount %></td>
           <td><%= order_detail.item.add_tax_price.to_s(:delimited) %></td>
         <% end %>
+      </tr>
     </div>
   </div>
 </div>
