@@ -1,4 +1,9 @@
 <!--制作ステータス-->
-<%= form_with model: @order_detail, url: admin_order_detail_path(item.id), method: :patch do |f| %>
-  <%= f.select :making_status options_from_collection_for_select(OrderDetail.all, :id)
+
+
+
+
+<%= form_with model:  @order_detail, url: admin_order_detail_path(params[:id]), method: :patch do |f| %>
+  <%= f.select :making_status, OrderDetail.making_statuses.keys.map{ |k| [I18n.t("enum.order_detail.making_status.#{k}"), k] } %>
+  <%= f.submit "更新", class: "btn btn-success" %>
 <% end %>
