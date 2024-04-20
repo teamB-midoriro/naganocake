@@ -4,6 +4,7 @@ class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
+    #@order_detail = OrderDetail.where(order_id:[@order.id])
   end
 
   def update
@@ -14,7 +15,7 @@ class Admin::OrdersController < ApplicationController
     # end
     @order.update(order_params)
     if params[:order][:status] == 'confirm_payment'
-      @order_deteils.each do |order_detail|
+      @order_details.each do |order_detail|
         order_detail.update!(making_status: 'waiting_manufacture')
       end
     end
