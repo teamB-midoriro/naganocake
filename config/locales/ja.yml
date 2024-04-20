@@ -1,10 +1,7 @@
 ja:
-<<<<<<< HEAD
   time:
     formats:
       default: "%Y/%m/%d"
-=======
->>>>>>> develop
   enums:
     order:
       status:
@@ -16,10 +13,6 @@ ja:
       payment_method:
         credit_card: 'クレジットカード'
         transfer: '銀行振込'
-<<<<<<< HEAD
-=======
-
->>>>>>> develop
     order_details:
       making_status:
         impossible_manufacture: '着手不可'
