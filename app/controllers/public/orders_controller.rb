@@ -60,9 +60,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders.all.page(params[:page]).per(8).order(created_at: :DESC)
   end
 
   def show
+    @order_details = OrderDetail.where(order_id: params[:id])
+    @order = Order.find(params[:id])
   end
 
   private
