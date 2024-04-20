@@ -51,7 +51,7 @@ class Public::OrdersController < ApplicationController
     end
 
     if CartItem.destroy_all
-      redirect_to orders_thanks_path
+      redirect_to action: thanks
     else
       render 'new'
     end
@@ -60,8 +60,10 @@ class Public::OrdersController < ApplicationController
   def thanks
   end
 
+  def index
+  end
+
   def show
-    render 'thanks'
   end
 
   private
