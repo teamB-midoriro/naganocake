@@ -11,12 +11,14 @@
       <h3 class="mt-5">¥<%= @item.add_tax_price.to_s(:delimited) %><span>(税込み)</span></h3>
     </div>
 <!--ここからカートに商品を追加するための画面-->
-    <div class="col d-flex justify-content-end">
-      <%= form_with model: @cart_item do |f| %>
-        <%= f.hidden_field :item_id, value: @item.id %>
-        <span class="mr-5"><%= f.select :amount, *[1..50] %></span>
-        <span><%= f.submit "カートに入れる", class: "btn btn-success" %></span>
-      <% end %>
-    </div>
+    <% if customer_signed_in? %>
+      <div class="col d-flex justify-content-end">
+        <%= form_with model: @cart_item do |f| %>
+          <%= f.hidden_field :item_id, value: @item.id %>
+          <span class="mr-5"><%= f.select :amount, *[1..50] %></span>
+          <span><%= f.submit "カートに入れる", class: "btn btn-success" %></span>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
