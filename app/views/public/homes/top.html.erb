@@ -22,15 +22,17 @@
       </div>
       <div class="row mt-4">
         <% @items.each do |item| %>
-          <div>
+          <% if item.is_active? %>
             <div>
-              <%= link_to item_path(item) do %>
-                <%= image_tag item.item_image, size: "150x150" %>
-              <% end %>
+              <div>
+                <%= link_to item_path(item) do %>
+                  <%= image_tag item.item_image, size: "150x150" %>
+                <% end %>
+              </div>
+              <div><%= item.name %></div>
+              <div>¥<%= item.add_tax_price.to_s(:delimited) %></div>
             </div>
-            <div><%= item.name %></div>
-            <div>¥<%= item.add_tax_price.to_s(:delimited) %></div>
-          </div>
+          <% end %>
         <% end %>
       </div>
       <div class="row justify-content-end">

@@ -26,3 +26,7 @@
  nav,footer{
   background-color: #FEEDC9;
  }
+
+ .field_with_errors {
+  display: contents;
+}
