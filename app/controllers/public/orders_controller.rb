@@ -24,7 +24,7 @@ class Public::OrdersController < ApplicationController
         @order.address = @address.address
         @order.name = @address.name
       else
-        render 'new'
+        render 'new', notice: "プルダウンから選択してください"
       end
     when "2"  #新しい住所を選択
       unless params[:order][:new_postal_code] == "" && params[:order][:new_address] == "" && params[:order][:new_name] == ""
@@ -33,7 +33,7 @@ class Public::OrdersController < ApplicationController
         @order.address = params[:order][:new_address]
         @order.name = params[:order][:new_name]
       else
-        render 'new'
+        render 'new', notice: "住所と宛名を入力してください"
       end
     end
 

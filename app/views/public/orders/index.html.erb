@@ -37,6 +37,9 @@
       <% end %>
     </tbody>
   </table>
+  <div class="text-center">
+    <%= paginate @orders, theme: 'bootstrap-5' %>
+  </div>
 <% else %>
   <div class="container text-center">
     <h4 class="mt-5">注文履歴はありません</h4>
