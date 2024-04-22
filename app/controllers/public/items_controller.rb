@@ -1,19 +1,15 @@
 class Public::ItemsController < ApplicationController
-  before_action :authenticate_customer!
 
   def index
     @items = Item.all.page(params[:page]).per(8).order(created_at: :DESC)
+    @genres = Genre.all
   end
 
   def show
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
+    @genres = Genre.all
   end
-
-  # def genre_search
-  #   @genre = Grenre.find(params[:id])
-  #   @items = @genre.items.order(created_at: :DESC)
-  # end
 
   private
 

@@ -40,14 +40,8 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items.all
 
     if @order.save
-      if @order.status == 0
-        @cart_items.each do |cart_item|
-          OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.add_tax_price, amount: cart_item.amount, making_status: 0)
-        end
-      else
-        @cart_items.each do |cart_item|
-          OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.add_tax_price, amount: cart_item.amount, making_status: 1)
-        end
+      @cart_items.each do |cart_item|
+        OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.add_tax_price, amount: cart_item.amount, making_status: 0)
       end
       redirect_to orders_thanks_path
       @cart_items.destroy_all

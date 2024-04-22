@@ -1,28 +1,28 @@
 <p class="notice"><%= notice %></p>
 
-<h5 class="text-center">ジャンル一覧・追加</h5>
+<h3 class="text-center">ジャンル一覧・追加</h3>
 <%= render 'layouts/errors', obj: @genre %>
-<div class="row justify-content-center">
-  <table class="col-md-6">
-    <tbody>
-    <%= form_with model: @genre, url: admin_genres_path do  |f| %>
-      <tr>
-        <td><%= f.label :name, "ジャンル名", class: "form-label" %></td>
-        <td><%= f.text_field :name, placeholder: "ジャンル名", class: "form-control" %></td>
-        <td><%= f.submit "新規登録", class: "btn btn-success" %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+<%= form_with model: @genre, url: admin_genres_path do  |f| %>
+<div class="row justify-content-center mt-3">
+  <div class="col-md-2">
+    <%= f.label :name, "ジャンル名", class: "form-label" %>
+  </div>
+  <div class="col-md-3">
+    <%= f.text_field :name, placeholder: "ジャンル名", class: "form-control" %>
+  </div>
+  <div class="col-md-3">
+    <%= f.submit "新規登録", class: "btn btn-success" %>
+  </div>
 </div>
+<% end %>
 
 <div class="row justify-content-center">
-  <div class="col-md-8">
+  <div class="col-md-5">
   <table class="table">
     <thead>
       <tr>
-        <th>ジャンル名</th>
-        <th></th>
+        <th style="width: 70%">ジャンル名</th>
+        <th style="width: 30%"></th>
       </tr>
     </thead>
     <tbody>
