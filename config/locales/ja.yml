@@ -19,3 +19,13 @@ ja:
         waiting_manufacture: '製作待ち'
         manufacturing: '製作中'
         finish: '製作完了'
+  activerecord:
+    attributes:
+      item:
+        name: '商品名'
+        introduction: '紹介文'
+        price: '価格'
+        item_image: '商品画像'
+  errors:
+    messages:
+      blank: 'を入力してください'
