@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     post "/orders/confirm" => "orders#confirm"
 
     resources :addresses, only: [:index, :show, :edit, :create, :update, :destroy]
+
+    resources :genres, only: [:show]
   end
 
   scope module: :admin do
