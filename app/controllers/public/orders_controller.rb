@@ -3,24 +3,38 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @addresses = Address.all
   end
 
   def confirm
     @cart_items = CartItem.where(customer_id: current_customer.id)
     @order = Order.new(order_params)
+    @address_type = params[:order][:address_type]
 
-    if params[:order][:address_type] == "0"  #自身の住所を選択
+    case @address_type
+    when "0"  #自身の住所を選択
+      @select_address = "〒" + current_customer.postal_code + "  " + current_customer.address
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
-    elsif params[:order][:address_type] == "1"  #登録済住所から選択
-      @address = Address.find(params[:order][:address_id])
-      @order.postal_code = @address.postal_code
-      @order.address = @address.address
-      @order.name = @address.name
-    else params[:order][:address_type] == "2"  #新しい住所を選択
-      @order.customer_id = current_customer.id
+    when "1"  #登録済住所から選択
+      unless params[:order][:address_id] == ""
+        @address = Address.find(params[:order][:address_id])
+        @select_address = "〒" + @address.postal_code + "  " + @address.address
+        @order.postal_code = @address.postal_code
+        @order.address = @address.address
+        @order.name = @address.name
+      else
+        render 'new', notice: "プルダウンから選択してください"
+      end
+    when "2"  #新しい住所を選択
+      unless params[:order][:new_postal_code] == "" && params[:order][:new_address] == "" && params[:order][:new_name] == ""
+        @select_address = "〒" + params[:order][:new_postal_code] + " " + params[:order][:new_address]
+        @order.postal_code = params[:order][:new_postal_code]
+        @order.address = params[:order][:new_address]
+        @order.name = params[:order][:new_name]
+      else
+        render 'new', notice: "住所と宛名を入力してください"
+      end
     end
 
     # 商品合計額の計算
