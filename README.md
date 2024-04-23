@@ -20,7 +20,7 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 # ログイン方法
 ````
 $ git clone git@github.com:teamB-midoriro/naganocake.git
-$ cd Nagano-cake
+$ cd naganocake
 $ rails db:migrate
 $ rails db:seed
 $ yarn install
