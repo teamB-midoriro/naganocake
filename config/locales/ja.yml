@@ -43,6 +43,8 @@ ja:
         introduction: '紹介文'
         price: '価格'
         item_image: '商品画像'
+      genre:
+        name: 'ジャンル名'
   errors:
     messages:
       blank: 'を入力してください'

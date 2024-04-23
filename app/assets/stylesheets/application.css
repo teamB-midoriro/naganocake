@@ -23,7 +23,7 @@
    flex: 1; /* 画面の高さから他の同レイヤーの要素の高さを引いた値に */
   }
 
- nav,footer{
+ .navber,footer{
   background-color: #FEEDC9;
  }
 
