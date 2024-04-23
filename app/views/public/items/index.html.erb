@@ -4,7 +4,7 @@
       <%= render 'public/genres/genre', genres: @genres %>
     </div>
     <div class="col-md-9">
-      <h3><strong>商品一覧</strong> (全 <%= @items.count %>件)</h3>
+      <h3><strong>商品一覧</strong> (全 <%= Item.where(is_active: 'true').count %>件)</h3>
       <div class="row justify-content-center">
         <% @items.each do |item| %>
           <% if item.is_active? %>
