@@ -5,25 +5,23 @@
       <%= render 'public/genres/genre', genres: @genres %>
     </div>
     <div class="col-md-7 offset-md-1">
-      <div class="backimage-text">
-        <div class="backimage"><%= image_tag 'cake_back.jpg', :size => '600x300', class: "" %>
-        <div class="text text-center">
-          <p>
-            ようこそ、ながのCAKEへ！<br>
-            このサイトは、ケーキ販売のECサイトになります。<br>
-            会員でない方も商品の閲覧はできますが、<br>
-            購入には会員登録が必要になります。
-          </p>
-        </div>
-        </div>
+      <div class="bg-img d-flex justify-content-center align-items-center mb-5">
+        <p class="bg-light p-3 rounded" style="opacity: 90%;">
+          ようこそ、ながのCAKEへ！<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。
+        </p>
       </div>
-      <div class="row mt-4">
+    </div>
+  </div>
+      <div class="row">
         <h2>新着商品</h2>
       </div>
       <div class="row mt-4">
         <% @items.each do |item| %>
           <% if item.is_active? %>
-            <div>
+            <div class="mx-2">
               <div>
                 <%= link_to item_path(item) do %>
                   <%= image_tag item.item_image, size: "150x150" %>
@@ -38,6 +36,5 @@
       <div class="row justify-content-end">
         <div class="mt-2"><%= link_to "すべての商品を見る", items_path %></div>
       </div>
-    </div>
   </div>
 </div>
