@@ -26,3 +26,25 @@ ja:
         waiting_manufacture: '製作待ち'
         manufacturing: '製作中'
         finish: '製作完了'
+  activerecord:
+    attributes:
+      customer:
+        email: 'メールアドレス'
+        password: 'パスワード'
+        last_name: '姓'
+        first_name: '名前'
+        last_name_kana: '姓のフリガナ'
+        first_name_kana: '名前のフリガナ'
+        postal_code: '郵便番号'
+        address: '住所'
+        telephone_number: '電話番号'
+      item:
+        name: '商品名'
+        introduction: '紹介文'
+        price: '価格'
+        item_image: '商品画像'
+      genre:
+        name: 'ジャンル名'
+  errors:
+    messages:
+      blank: 'を入力してください'
