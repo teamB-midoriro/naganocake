@@ -7,15 +7,17 @@
       <h3><strong>商品一覧</strong> (全 <%= @items.count %>件)</h3>
       <div class="row justify-content-center">
         <% @items.each do |item| %>
-          <div>
+          <% if item.is_active? %>
             <div>
-              <%= link_to item_path(item) do %>
-                <%= image_tag item.item_image, size: "200x200" %>
-              <% end %>
+              <div>
+                <%= link_to item_path(item) do %>
+                  <%= image_tag item.item_image, size: "200x200" %>
+                <% end %>
+              </div>
+              <div><%= item.name %></div>
+              <div>¥<%= item.add_tax_price.to_s(:delimited) %></div>
             </div>
-            <div><%= item.name %></div>
-            <div>¥<%= item.add_tax_price.to_s(:delimited) %></div>
-          </div>
+          <% end %>
         <% end %>
       </div>
       <div class="my-3">

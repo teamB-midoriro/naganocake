@@ -37,11 +37,11 @@
         </tr>
         <tr>
           <td><strong>商品合計</strong></td>
-          <td><%= @cart_items_price %></td>
+          <td><%= @cart_items_price.to_s(:delimited) %></td>
         </tr>
         <tr>
           <td><strong>請求金額</strong></td>
-          <td><%= @total_payment %></td>
+          <td><%= @total_payment.to_s(:delimited) %></td>
         </tr>
       </table>
       </div>
