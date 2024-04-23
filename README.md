@@ -1,5 +1,5 @@
 # Nagano_cake
-
+![IMG_0746](https://github.com/teamB-midoriro/naganocake/assets/158440003/f70ebcab-111a-4109-8b36-c54760b110a6)
 # 概要
 長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト開発。
 
@@ -16,3 +16,9 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 
 # 実装機能
 ![機能一覧](https://github.com/teamB-midoriro/naganocake/assets/158440003/59ca8221-d4c9-4341-9b35-a4dc42e59add)
+
+# ログイン方法
+管理者ログイン 
+rails db:seed　後URLを/admin/sign_upにしてください。
+メールアドレス：admin@gmail.com
+パスワード：adminb
