@@ -3,7 +3,7 @@
 <h3 class="text-center">ジャンル一覧・追加</h3>
 <%= render 'layouts/errors', obj: @genre %>
 <%= form_with model: @genre, url: admin_genres_path do  |f| %>
-<div class="row justify-content-center mt-3">
+<div class="row justify-content-center my-3">
   <div class="col-md-2">
     <%= f.label :name, "ジャンル名", class: "form-label" %>
   </div>
@@ -20,9 +20,9 @@
   <div class="col-md-5">
   <table class="table">
     <thead>
-      <tr>
-        <th style="width: 70%">ジャンル名</th>
-        <th style="width: 30%"></th>
+      <tr class="table-color">
+        <td style="width: 70%">ジャンル名</td>
+        <td style="width: 30%"></td>
       </tr>
     </thead>
     <tbody>
