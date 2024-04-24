@@ -8,7 +8,7 @@
       <div class="row">
         <% @items.each do |item| %>
           <% if item.is_active? %>
-            <div class="card">
+            <div class="card m-1">
               <div class="card-img-top">
                 <%= link_to item_path(item) do %>
                   <%= image_tag item.item_image, size: "200x200" %>

@@ -11,7 +11,7 @@
         <tr>
           <th class="table-active font-weight-normal">配送先</th>
           <td  class="lh-1">
-            <%= @order.postal_code %><br>
+            〒<%= @order.postal_code %><br>
             <%= @order.address %><br>
             <%= @order.name %>
           </td>
@@ -32,16 +32,16 @@
         <tr>
           <th class="table-active font-weight-normal">商品合計</th>
           <% @sum = @order.total_payment - @order.shipping_cost %>
-          <td><%= @sum %></td>
+          <td>¥ <%= @sum.to_s(:delimited) %></td>
         </tr>
         <tr>
           <th class="table-active font-weight-normal">配送料</th>
-          <td><%= @order.shipping_cost.to_s(:delimited) %></td>
+          <td>¥ <%= @order.shipping_cost.to_s(:delimited) %></td>
         </tr>
-          <tr>
-            <th class="table-active">ご請求額</th>
-            <td><%= @order.total_payment.to_s(:delimited) %></td>
-          </tr>
+        <tr>
+          <th class="table-active">ご請求額</th>
+          <td>¥ <%= @order.total_payment.to_s(:delimited) %></td>
+        </tr>
       </table>
     </div>
   </div>
@@ -62,8 +62,8 @@
             <tr>
               <td><%= order_detail.item.name %></td>
               <td><%= order_detail.amount %></td>
-              <td><%= order_detail.item.add_tax_price.to_s(:delimited) %></td>
-              <td><%= order_detail.subtotal %></td>
+              <td>¥ <%= order_detail.item.add_tax_price.to_s(:delimited) %></td>
+              <td>¥ <%= order_detail.subtotal %></td>
             </tr>
           <% end %>
         </tboby>
