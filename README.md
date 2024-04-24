@@ -28,7 +28,7 @@ $ bundle install
 $ rails s
 ````
 管理者ログイン
-* rails db:seed　後URLを/admin/sign_upにしてください。
+* URLを/admin/sign_upにしてください。
 * メールアドレス：admin@gmail.com
 * パスワード：adminb
 
