@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  devise_scope :customer do
+    get "customers" => redirect("/customers/sign_up")
+  end
 
   scope module: :public do
     root "homes#top"

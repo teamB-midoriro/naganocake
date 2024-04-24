@@ -14,25 +14,27 @@
  *= require_self
  */
 
- body {
+body {
   display: flex; /* フレックスボックスに有効に */
   flex-flow: column; /* 要素を縦に並べる */
   min-height: 100vh; /* 最小でも画面の高さ分のbodyの高さを担保する */
   font-family: "Noto Serif JP", sans-serif !important;
-  }
+}
 
- main {
-   flex: 1; /* 画面の高さから他の同レイヤーの要素の高さを引いた値に */
-  }
+main {
+  flex: 1; /* 画面の高さから他の同レイヤーの要素の高さを引いた値に */
+}
 
- .navber,footer{
+.navber,footer{
   background-color: #FEEDC9;
   color: 	#6A3300;
- }
- .pagination {
-    justify-content: center;
- }
- .field_with_errors {
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.field_with_errors {
   display: contents;
 }
 
@@ -44,4 +46,9 @@
   box-shadow: 10px 10px 15px -10px;
   height: 400px;
   width: 100%;
+}
+
+.table-color {
+ background-color: #FEEDC9;
+ color: #000000;
 }
