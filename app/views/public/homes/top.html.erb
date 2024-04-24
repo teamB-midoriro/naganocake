@@ -21,15 +21,17 @@
       <div class="row mt-4">
         <% @items.each do |item| %>
           <% if item.is_active? %>
-            <div class="mx-2">
-              <div>
+          <div class="card mx-2">
+            <div class="card-img-top">
                 <%= link_to item_path(item) do %>
                   <%= image_tag item.item_image, size: "150x150" %>
                 <% end %>
-              </div>
+            </div>
+            <div class="card-body">
               <div><%= item.name %></div>
               <div>¥<%= item.add_tax_price.to_s(:delimited) %></div>
             </div>
+          </div>
           <% end %>
         <% end %>
       </div>
