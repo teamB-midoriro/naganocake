@@ -1,6 +1,5 @@
 <!--商品詳細-->
 <div class="container justify-content-center mt-5 ">
-  <p><%= render 'layouts/errors', obj: @cart_item %></p>
   <div class="row">
     <div class="col-md-3">
       <%= render 'public/genres/genre', genres: @genres %>
@@ -8,7 +7,6 @@
     <div class="col-md-5">
       <%= image_tag @item.item_image, size: "200x200" %>
     </div>
-
     <div class="col-md-4 ">
       <h2><%= @item.name %></h2>
       <h5 class="mb-5"><%= @item.introduction %></h5>
