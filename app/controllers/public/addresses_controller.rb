@@ -10,7 +10,7 @@ class Public::AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
     if @address.save
-      redirect_to request.referer
+      redirect_to request.referer, notice: "配送先を登録しました"
     else
       @addresses = current_customer.addresses
       render :index
@@ -24,7 +24,7 @@ class Public::AddressesController < ApplicationController
   def update
     @address = Address.find(params[:id])
     if @address.update(address_params)
-      redirect_to addresses_path
+      redirect_to addresses_path, notice: "配送先を更新しました"
     else
       render :edit
     end

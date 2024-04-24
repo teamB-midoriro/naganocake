@@ -13,7 +13,7 @@ class Admin::OrderDetailsController < ApplicationController
         @order.update!(status: 'preparing_ship')
       end
     end
-    redirect_to request.referer
+    redirect_to request.referer, notice: "製作ステータスを更新しました"
   end
 
   private

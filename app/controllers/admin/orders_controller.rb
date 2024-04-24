@@ -15,7 +15,7 @@ class Admin::OrdersController < ApplicationController
         order_detail.update!(making_status: 'waiting_manufacture')
       end
     end
-    redirect_to request.referer
+    redirect_to request.referer, notice: "注文ステータスを更新しました"
   end
 
   private
