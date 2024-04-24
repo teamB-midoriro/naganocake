@@ -8,14 +8,16 @@
       <div class="row justify-content-center">
         <% @items.each do |item| %>
           <% if item.is_active? %>
-            <div>
-              <div>
+            <div class="card">
+              <div class="card-img-top">
                 <%= link_to item_path(item) do %>
                   <%= image_tag item.item_image, size: "200x200" %>
                 <% end %>
               </div>
-              <div><%= item.name %></div>
-              <div>¥<%= item.add_tax_price.to_s(:delimited) %></div>
+              <div class="card-body">
+                <div><%= item.name %></div>
+                <div>¥<%= item.add_tax_price.to_s(:delimited) %></div>
+              </div>
             </div>
           <% end %>
         <% end %>

@@ -1,48 +1,46 @@
 <div class="container">
-<h3>注文履歴一覧</h3>
-<% if @orders.exists? %>
-  <table class="table table-bordered border-black">
-    <thead>
-      <tr class= "table-active" >
-        <th>注文日</th>
-        <th>配送先</th>
-        <th>注文商品</th>
-        <th>支払金額</th>
-        <th>ステータス</th>
-        <th>注文詳細</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @orders.each do |order| %>
-      <tr>
-        <td><%= l order.created_at %></td>
-        <td class="lh-1">
-          <%= order.postal_code %></br>
-          <%= order.address %></br>
-          <%= order.name %>
-        </td>
-        <td>
-          <ul class="list-unstyled">
-            <% order.order_details.each do |order_detail| %>
-              <li class="lh-1"><%= order_detail.item.name %></li>
-            <% end %>
-          </ul>
-        </td>
-        <td><%= order.total_payment.to_s(:delimited) %>円</td>
-        <td><%= order.status_i18n %></td>
-        <td>
-          <%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <div class="text-center">
-    <%= paginate @orders, theme: 'bootstrap-5' %>
-  </div>
-<% else %>
-  <div class="container text-center">
-    <h4 class="mt-5">注文履歴はありません</h4>
-  </div>
-<% end %>
+  <h3>注文履歴一覧</h3>
+  <% if @orders.exists? %>
+    <table class="table table-bordered border-black">
+      <thead>
+        <tr class= "table-active" >
+          <th>注文日</th>
+          <th>配送先</th>
+          <th>注文商品</th>
+          <th>支払金額</th>
+          <th>ステータス</th>
+          <th>注文詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= l order.created_at %></td>
+            <td class="lh-1">
+              〒<%= order.postal_code %></br>
+              <%= order.address %></br>
+              <%= order.name %>
+            </td>
+            <td>
+              <ul class="list-unstyled">
+                <% order.order_details.each do |order_detail| %>
+                  <li class="lh-1"><%= order_detail.item.name %></li>
+                <% end %>
+              </ul>
+            </td>
+            <td>¥ <%= order.total_payment.to_s(:delimited) %></td>
+            <td><%= order.status_i18n %></td>
+            <td><%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="text-center">
+      <%= paginate @orders, theme: 'bootstrap-5' %>
+    </div>
+  <% else %>
+    <div class="container text-center">
+      <h4 class="mt-5">注文履歴はありません</h4>
+    </div>
+  <% end %>
 </div>
