@@ -65,11 +65,15 @@
           <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
         </div>
       <% else %>
-        <div class="text-center">
-          <div class="col-md-4">
+        <div class="d-flex justify-content-center text-center">
+          <div class="row">
+           <div class="col-10">
             <h4>ショッピングカート</h4>
           </div>
-          <h4 class="mt-5">カートの中身は空です</h4>
+          <div class="col-10 mt-5">
+            <h4>カートの中身は空です</h4>
+          </div>
+          </div>
         </div>
       <% end %>
     </div>
