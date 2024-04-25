@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
-  devise_for :admins, controllers: {
-    sessions: "admin/sessions"
-  }
-  devise_for :customers, controllers: {
+  devise_for :admin, skip: :sessions
+  devise_scope :admin do
+    get "/admin/sign_in" => "admin/sessions#new", as: :new_admin_session
+    post "/admin/sign_in" => "admin/sessions#create", as: :admin_session
+    delete "/admin/sign_out" => "admin/sessions#destroy", as: :destroy_admin_session
+  end
+
+  devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  devise_scope :customer do
+    get "customers" => redirect("/customers/sign_up")
+  end
 
   scope module: :public do
     root "homes#top"
@@ -20,20 +27,25 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :update, :create, :destroy]
     delete "/cart_items/destroy_all" => "cart_items#destroy_all"
 
+    get "/orders/thanks" => "orders#thanks"
     resources :orders, only: [:new, :create, :index, :show]
     post "/orders/confirm" => "orders#confirm"
-    get "/orders/thanks" => "orders#thanks"
 
     resources :addresses, only: [:index, :show, :edit, :create, :update, :destroy]
+
+    resources :genres, only: [:show]
+  end
+
+  scope module: :admin do
+    get "/admin" => "homes#top"
   end
 
   namespace :admin do
-    get "/admin" => "homes#top"
     resources :items, only: [:new, :index, :show, :edit, :create, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :customers, only: [:index, :edit, :show, :update]
     resources :orders, only: [:show, :update]
-    resources :order_detalis, only: [:update]
+    resources :order_details, only: [:update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

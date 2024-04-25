@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 mx-3 mt-3">
+      <h5>会員情報編集</h5>
+      <%= render 'layouts/errors', obj: @customer %>
+      <%= form_with model: @customer, url: customers_information_path, method: :patch do |f| %>
+　　　<table class="my-3">
+　　　  <tr>
+　　　    <td><label>名前</label></td>
+　　　    <td><%= f.label :last_name, "(姓)" %></td>
+　　　    <td><%= f.text_field :last_name, autofocus: true, autocomplete: "family-name", class: "form-control" %></td>
+　　　    <td><%= f.label :first_name, "(名)" %></td>
+　　　    <td><%= f.text_field :first_name, autocomplete: "given-name", class: "form-control" %></td>
+　　　  </tr>
+
+　　　  <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td><label>フリガナ</label></td>
+          <td><%= f.label :last_name_kana, "(セイ)" %></td>
+          <td><%= f.text_field :last_name_kana, autocomplete: "name", class: "form-control" %></td>
+          <td><%= f.label :last_name_kana, "(メイ)" %></td>
+          <td><%= f.text_field :first_name_kana, autocomplete: "name", class: "form-control" %></td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td><%= f.label :postal_code, "郵便番号" %></td>
+          <td></td>
+          <td><%= f.text_field :postal_code, autocomplete: "postal-code", class: "form-control" %></td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td><%= f.label :address, "住所" %></td>
+          <td></td>
+          <td colspan="3"><%= f.text_field :address, autocomplete: "shipping", class: "form-control" %></td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td><%= f.label :telephone_number, "電話番号" %></td>
+          <td></td>
+          <td><%= f.text_field :telephone_number, autocomplete: "tel-national", class: "form-control" %></td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td><%= f.label :email, "メールアドレス" %></td>
+          <td></td>
+          <td><%= f.email_field :email, autocomplete: "email", class: "form-control" %></td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td><%= f.submit "編集内容を保存", class: 'btn px-5 btn-success' %></td>
+          <td></td>
+          <td><%= link_to "退会する", customers_unsubscribe_path, class: 'btn px-4 btn-danger' %></td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

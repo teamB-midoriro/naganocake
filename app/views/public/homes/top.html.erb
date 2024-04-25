@@ -1,0 +1,42 @@
+<div class="container mt-5 ">
+  <p class="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'public/genres/genre', genres: @genres %>
+    </div>
+    <div class="col-md-7 offset-md-1">
+      <div class="bg-img d-flex justify-content-center align-items-center mb-5">
+        <p class="bg-light p-3 rounded" style="opacity: 90%;">
+          ようこそ、ながのCAKEへ！<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。
+        </p>
+      </div>
+    </div>
+  </div>
+      <div class="row">
+        <h2>新着商品</h2>
+      </div>
+      <div class="row mt-4">
+        <% @items.each do |item| %>
+          <% if item.is_active? %>
+          <div class="card mx-2">
+            <div class="card-img-top">
+                <%= link_to item_path(item) do %>
+                  <%= image_tag item.item_image, size: "150x150" %>
+                <% end %>
+            </div>
+            <div class="card-body">
+              <div><%= item.name %></div>
+              <div>¥<%= item.add_tax_price.to_s(:delimited) %></div>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="row justify-content-end">
+        <div class="mt-2"><%= link_to "すべての商品を見る", items_path %></div>
+      </div>
+  </div>
+</div>

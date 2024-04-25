@@ -1,0 +1,30 @@
+<div class="container">
+  <h3 class="my-5">注文履歴一覧</h3>
+  <table class="table">
+    <thead>
+      <tr class="table-color">
+        <td>購入日時</td>
+        <td>購入者</td>
+        <td>注文個数</td>
+        <td>注文ステータス</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+        <td>
+          <%= link_to admin_order_path(order), class: "text-dark" do %>
+            <%= l order.created_at %>
+          <% end %>
+        </td>
+        <td><%= order.customer.last_name %> <%= order.customer.first_name %></td>
+        <td><%= OrderDetail.where(order_id: order.id).pluck(:amount).sum %></td>
+        <td><%= order.status_i18n %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <%= paginate @orders, theme: 'bootstrap-5' %>
+  </div>
+</div>

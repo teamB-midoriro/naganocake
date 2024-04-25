@@ -13,3 +13,42 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  display: flex; /* フレックスボックスに有効に */
+  flex-flow: column; /* 要素を縦に並べる */
+  min-height: 100vh; /* 最小でも画面の高さ分のbodyの高さを担保する */
+  font-family: "Noto Serif JP", sans-serif !important;
+}
+
+main {
+  flex: 1; /* 画面の高さから他の同レイヤーの要素の高さを引いた値に */
+}
+
+.navber,footer{
+  background-color: #FEEDC9;
+  color: 	#6A3300;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.field_with_errors {
+  display: contents;
+}
+
+.bg-img{
+  background-image: url("top_cake.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 30px;
+  box-shadow: 10px 10px 15px -10px;
+  height: 400px;
+  width: 100%;
+}
+
+.table-color {
+ background-color: #FEEDC9;
+ color: #000000;
+}
